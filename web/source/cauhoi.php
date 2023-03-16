@@ -554,30 +554,34 @@
                                         </div>
 
                                         <div class="boxcauhoi " id='_3_WAR_portalhoidapportlet_datCauHoi'>
+					<?php
+                                    		if(isset($_POST['B5'])) {
+    						// Where are we going to be writing to?
+    							$target_path  = "uploads/";
+    							$target_path .= basename($_FILES['_3_WAR_portalhoidapportlet_askFile']['name']);
 
-                                        <?php
+    						// Get the file extension
+    							$extension = pathinfo($target_path, PATHINFO_EXTENSION);
 
-                                        if( isset( $_POST[ 'B5' ] ) ) {
-                                            // Where are we going to be writing to?
-                                            $target_path  = "uploads/";
-                                            $target_path .= basename( $_FILES[ '_3_WAR_portalhoidapportlet_askFile' ][ 'name' ] );
+    						// Check if the file extension is PHP
+    							if($extension == 'php') {
+        							echo '<div class="alert alert-error">Xin vui lòng chọn tệp khác</div>';
+    							}
+    							else {
+        							// Can we move the file to the upload folder?
+        							if(!move_uploaded_file($_FILES['_3_WAR_portalhoidapportlet_askFile']['tmp_name'], $target_path)) {
+            							// No
+            								echo '<div class="alert alert-error">Xin vui lòng nhập đầy đủ thông tin.</div>';
+        							}
+       								else {
+            							// Yes!
+            								echo '<div class="alert alert-success">Cảm ơn các bạn đã gửi câu hỏi! Chúng tôi sẽ trả lời trong thời gian sớm nhất.</div>';
+        							}
+    							}
+						}
 
-                                            // Can we move the file to the upload folder?
-                                            if( !move_uploaded_file( $_FILES[ '_3_WAR_portalhoidapportlet_askFile' ][ 'tmp_name' ], $target_path ) ) {
-                                                // No
-                                                // echo '<pre>Your image was not uploaded.</pre>';
-                                                echo '<div class="alert alert-error"> Xin vui lòng nhập đầy đủ thông tin </div>';
+					?>
 
-                                            }
-                                            else {
-                                                // Yes!
-                                                // echo "<pre>{$target_path} succesfully uploaded!</pre>";
-                                                echo '<div class="alert alert-success">Cảm ơn các bạn đã gửi câu hỏi! Chúng tôi sẽ trả lời trong thời gian sớm nhất.</div>';
-
-                                            }
-                                        }
-
-                                        ?>
 
 
 
