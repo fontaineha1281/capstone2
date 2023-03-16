@@ -16,9 +16,6 @@ RUN mkdir -p /var/www/html
 # Copy Source to NGINX
 COPY ./source/ /var/www/html
 
-#Change Own Directory
-RUN chown www-data -R /var/www/html
-
 # Config Nginx
 COPY default.conf /etc/nginx/sites-available/default
 COPY default.conf /etc/nginx/sites-enabled/default
