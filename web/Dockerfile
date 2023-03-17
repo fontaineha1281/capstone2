@@ -18,8 +18,8 @@ COPY ./source/ /var/www/html
 
 
 # Config Nginx
-COPY default.conf /etc/nginx/sites-available/default
-COPY default.conf /etc/nginx/sites-enabled/default
+COPY ./nginx/default.conf /etc/nginx/sites-available/default
+COPY ./nginx/default.conf /etc/nginx/sites-enabled/default
 
 # Run Nginx and PHP-FPM
 ENTRYPOINT /entrypoint.sh
