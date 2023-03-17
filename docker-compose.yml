@@ -1,0 +1,54 @@
+version: '3.7'
+
+services:
+  web-server:
+    container_name: web-server
+    image: web-server
+    restart: always
+    build: 
+      context: ./web
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+      - "1281:1281"
+    volumes:
+      - ./web/source:/var/www/html
+    networks:
+      - bridge-network
+    logging:
+      driver: "syslog"
+      options:
+        syslog-address: "tcp://forwarder:1281"
+        tag: "{{.Name}}"
+  
+  splunk:
+    container_name: splunk
+    image: splunk/splunk:latest
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=Admin123$
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./splunk/splunk_data:/opt/splunk/var
+      - ./splunk/splunk_logs:/opt/splunk/var/log
+    networks:
+      - bridge-network
+
+  splunk-forwarder:
+    container_name: forwarder
+    image: splunk/universalforwarder:latest
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_SERVER=splunk
+      - SPLUNK_FORWARD_SERVER=splunk:9997
+      - SPLUNK_ADD="tcp://web-server:1281"
+    volumes:
+      - ./splunk/forwarder:/opt/splunkforwarder/etc/apps/forwarder/local
+    networks:
+      - bridge-network
+
+networks:
+  bridge-network:
+    external: true
+    driver: bridge
