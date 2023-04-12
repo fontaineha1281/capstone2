@@ -1,8 +1,4 @@
 #!/bin/bash
-echo "Docker Web Server container has been started"
-chown -R www-data:www-data /var/www/html
-nginx
-service php8.0-fpm start
 
 # Chạy Splunk
 ${SPLUNK_HOME}/bin/splunk start --accept-license --no-prompt
@@ -26,3 +22,10 @@ ${SPLUNK_HOME}/bin/splunk enable boot-start -user root
 
 # Giữ container chạy
 tail -f /dev/null
+
+
+
+
+
+
+

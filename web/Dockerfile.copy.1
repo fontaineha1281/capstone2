@@ -1,0 +1,41 @@
+FROM php:8.0.6-fpm-alpine3.13
+ARG ENV_FILE
+ENV PHP_EXTRA_CONFIGURE_ARGS \
+  --enable-fpm \
+  --with-fpm-user=www-data \
+  --with-fpm-group=www-data \
+  --enable-intl \
+  --enable-opcache \
+  --enable-zip \
+  --enable-calendar
+
+RUN apk update
+RUN apk upgrade
+RUN apk add wget 
+RUN apk add curl
+RUN apk add git
+RUN apk add bash
+RUN apk add nginx openrc
+RUN apk add util-linux
+
+
+RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install exif 
+RUN docker-php-ext-install pcntl 
+RUN docker-php-ext-install bcmath 
+
+RUN apk add nginx
+RUN mkdir -p /run/nginx
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN mkdir /var/www/web
+WORKDIR /var/www/web
+COPY ./source/ .
+
+ADD ./entrypoint.sh ./entrypoint.sh
+RUN tr -d "\015" <entrypoint.sh >Entrypoint.sh
+RUN mv ./Entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 4200
+ENTRYPOINT /entrypoint.sh
