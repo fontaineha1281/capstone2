@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Capstone2/web'
-                sh 'docker build -t capstone2 .'
+                sh 'sudo docker build -t capstone2 .'
             }
         }      
     }
