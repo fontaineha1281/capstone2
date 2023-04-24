@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Capstone2/web'
-                sh 'docker compose up -d'
+                sh 'docker compose up'
             }
         }      
     }
