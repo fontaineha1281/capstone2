@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Capstone2/'
-                sh 'cp -r * /root/test/'
+                sh 'sudo cp -r * /root/test/'
                 sh 'cd /root/test'
             }
         }      
