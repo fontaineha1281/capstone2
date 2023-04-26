@@ -11,7 +11,8 @@ pipeline {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Capstone2/'
                 sh 'sudo cp -r * /root/test/'
-                sh 'sudo cd /root/test'
+                sh 'sudo chown -R jenkins /root/test*'
+                sh 'cd /root/test'
             }
         }      
     }
