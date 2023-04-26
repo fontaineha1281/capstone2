@@ -9,8 +9,9 @@ pipeline {
         } 
         stage('Deploy') {
             steps {
-                sh 'cd /var/lib/jenkins/workspace/Capstone2/web'
-                sh 'sudo docker build -t capstone2 .'
+                sh 'cd /var/lib/jenkins/workspace/Capstone2/'
+                sh 'cp -r * ~/test'
+                sh 'cd ~/test'
             }
         }      
     }
