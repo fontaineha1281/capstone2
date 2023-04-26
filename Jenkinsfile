@@ -10,8 +10,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Capstone2/'
-                sh 'cp -r * ~/test'
-                sh 'cd ~/test'
+                sh 'cp -r * /root/test/'
+                sh 'cd /root/test'
             }
         }      
     }
