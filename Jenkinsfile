@@ -8,6 +8,9 @@ pipeline {
             }
         } 
         stage('Deploy') {
+            agent {
+                label 'linux-anh'   
+            }
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Capstone2/'
                 sh 'sudo cp -r * /root/test/'
