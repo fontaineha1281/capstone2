@@ -1,16 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        label 'linux-anh'
+    }
     stages {
         stage('Checkout') {
             steps {
-                // Clone your React project from your repository
+                // Clone your project from your repository
                 git branch: 'main', url: 'https://github.com/fontaineha1281/capstone2.git'
             }
         } 
         stage('Deploy') {
-            agent {
-                label 'linux-anh'   
-            }
             steps {
                 sh 'cd /var/lib/jenkins/workspace/Capstone2/'
                 sh 'sudo cp -r * /root/test/'
