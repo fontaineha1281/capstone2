@@ -2,7 +2,7 @@
 <html class="aui ltr" dir="ltr" lang="vi-VN">
 
 <head>
-    <title>Hỏi đáp - Sở Thông Tin Và Truyền Thông</title>
+    <title>Hỏi đáp - Sở Thông Tin Và Truyền Thông Test</title>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <link href="https://sotttt.hanoi.gov.vn/so4t-theme/images/your logo.ico" rel="Shortcut Icon" />
     <link href="https://sotttt.hanoi.gov.vn/hoi-ap?p_p_id=3_WAR_portalhoidapportlet&amp;p_p_lifecycle=0&amp;p_p_state=normal&amp;p_p_mode=view&amp;p_p_col_id=column-1&amp;p_p_col_pos=1&amp;p_p_col_count=2&amp;_3_WAR_portalhoidapportlet_categoryId=0&amp;_3_WAR_portalhoidapportlet_mvcPath=%2Fhtml%2Fportlet%2Fcontent%2Fcreate_entry.jsp" rel="canonical" />
