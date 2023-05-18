@@ -5,7 +5,7 @@ services:
     container_name: web-server
     image: web-server
     restart: always
-    build: 
+    build:
       context: .
       dockerfile: ./Dockerfile
     ports:
@@ -13,3 +13,5 @@ services:
     volumes:
       - log_web:/var/log
 
+volumes:
+  log_web:
