@@ -10,4 +10,6 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "80:80"
+    volumes:
+      - log_web:/var/log
 
