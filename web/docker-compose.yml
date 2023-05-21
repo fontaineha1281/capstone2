@@ -12,6 +12,8 @@ services:
       - "80:80"
     volumes:
       - log_web:/var/log
+      - source_code:/var/www/html
 
 volumes:
   log_web:
+  source_code:
