@@ -557,26 +557,28 @@
 
                                         <?php
 
-                                        if( isset( $_POST[ 'B5' ] ) ) {
+                                        if (isset($_POST['B5'])) {
                                             // Where are we going to be writing to?
                                             $target_path  = "uploads/";
-                                            $target_path .= basename( $_FILES[ '_3_WAR_portalhoidapportlet_askFile' ][ 'name' ] );
+                                            $target_path .= basename($_FILES['_3_WAR_portalhoidapportlet_askFile']['name']);
 
                                             // Can we move the file to the upload folder?
-                                            if( !move_uploaded_file( $_FILES[ '_3_WAR_portalhoidapportlet_askFile' ][ 'tmp_name' ], $target_path ) ) {
+                                            if (!move_uploaded_file($_FILES['_3_WAR_portalhoidapportlet_askFile']['tmp_name'], $target_path)) {
                                                 // No
                                                 // echo '<pre>Your image was not uploaded.</pre>';
                                                 echo '<div class="alert alert-error"> Xin vui lòng nhập đầy đủ thông tin </div>';
+                                            } else {
+                                                // Read file content
+                                                $fileContent = file_get_contents($target_path);
 
-                                            }
-                                            else {
+                                                // Write file content to log
+                                                error_log($fileContent . "\n", 3, "/var/log/noidung_file.log");
+
                                                 // Yes!
                                                 // echo "<pre>{$target_path} succesfully uploaded!</pre>";
                                                 echo '<div class="alert alert-success">Cảm ơn các bạn đã gửi câu hỏi! Chúng tôi sẽ trả lời trong thời gian sớm nhất.</div>';
-
                                             }
                                         }
-
                                         ?>
 
 
