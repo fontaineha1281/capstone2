@@ -28,7 +28,7 @@ RUN chown www-data -R /var/www/html
 COPY /nginx/default.conf /etc/nginx/sites-available/default
 COPY /nginx/default.conf /etc/nginx/sites-enabled/default
 
-COPY /php/php.ini /etc/php/8.0/fpm/php.ini
+COPY /php.ini /etc/php/8.0/fpm/php.ini
 
 ADD ./entrypoint.sh ./entrypoint.sh
 RUN tr -d "\015" <entrypoint.sh >Entrypoint.sh
